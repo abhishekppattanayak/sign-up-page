@@ -19,27 +19,37 @@ main {
     width: 100%;
     display: flex;
 }
-main > div {
+main > div:first-child {
     background-image: url(./images/laptop.jpg);
     background-position: 0 center;
     background-size: cover;
     background-repeat: no-repeat;
+    height: 100svh;
     width: 50%;
 }
+main > div:nth-child(2) {
+    display: flex;
+    flex-direction: column;
+    flex-basis: 720px;
+}
 form{
+    flex-grow: 4;
     display: flex;
     justify-content: center;
     align-content: center;
-    flex-basis: 720px;
     flex-flow: row wrap;
     padding: 72px;
     gap: 24px;
+}
+form + div {
+    flex-grow: 1;
+    align-self: center;
 }
 div:has(>input){
     display: flex;
     flex-direction: column-reverse;
 }
-form > div > label {
+input + label {
     font-size: 16px;
     padding-bottom: 8px;
     display: none;
@@ -74,15 +84,32 @@ footer {
     font-size: 16px;
     color: white;
     padding-bottom: 1vh;
+    text-align: center;
+    padding: 2vh;
 }
 @media(max-width: 576px){
     main{
         flex-direction: column;
         align-items: center;
     }
+    main > div:nth-child(1) {
+        width: 100vw;
+        height: 100svh;
+        background-size: cover;
+    }
+    input {
+        width: 150%;
+        align-self: center;
+    }
+    button[type="submit"] {
+        align-self: center;
+    }
 }
-@media (max-width: 1146px) {
-    main > form {
+@media (max-width: 1176px) {
+    form {
         flex-direction: column;
+    }
+    button[type="submit"] {
+        align-self: center;
     }
 }
